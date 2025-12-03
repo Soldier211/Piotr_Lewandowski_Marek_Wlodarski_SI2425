@@ -21,7 +21,7 @@ even(s(s(X))) :- even(X).
 times(zero, X, zero) :- isnumber(X),!.
 times(s(X), Y, Z) :- add(W,Y,Z),times(X,Y,W),!.
 
-quotient(_, zero, _) :- fail.
+quotient(_, zero, _) :- !,fail.
 quotient(zero, X, zero) :- isnumber(X),not(isequal(X,zero)),!.
 quotient(X, s(zero), X) :- isnumber(X),!.
 quotient(X, Y, zero) :- isnumber(X),isnumber(Y),lessthan(X, Y),!.
@@ -40,3 +40,4 @@ fibonacci(s(s(N)),X) :- fibonacci(s(N),W),fibonacci(N,Z),add(W,Z,X).
 
 shownum(zero,0).
 shownum(s(X),N) :- shownum(X, M), N is M + 1.
+
